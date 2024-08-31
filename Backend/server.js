@@ -2,7 +2,10 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import bluejobgiverRoute from "./routes/blue-jobgiver.route.js";
-import authRoute from "./routes/auth.route.js";
+import authbluejobgiverRoute from "./routes/auth-bluejobgiver.route.js";
+import authbluejobseekerRoute from "./routes/auth-bluejobseeker.route.js";
+import authwhitejobgiverRoute from "./routes/auth-whitejobgiver.route.js";
+import authwhitejobseekerRoute from "./routes/auth-whitejobseeker.route.js";
 
 const app = express();
 dotenv.config();
@@ -23,8 +26,12 @@ const connect = async () =>{
     }
 }
 
-app.use("/api/user",bluejobgiverRoute);
-app.use("/api/auth",authRoute);
+app.use("/api/user/",bluejobgiverRoute);
+app.use("/api/auth/bluejobgiver",authbluejobgiverRoute);
+app.use("/api/auth/bluejobseeker",authbluejobseekerRoute);
+app.use("/api/auth/whitejobgiver",authwhitejobgiverRoute);
+app.use("/api/auth/whitejobseeker",authwhitejobseekerRoute);
+
 
 
 app.listen(8800, ()=>
