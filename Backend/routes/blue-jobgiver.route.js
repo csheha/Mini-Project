@@ -1,9 +1,8 @@
 import express from "express";
-import { getUser } from "../controllers/blue-jobgiver.controller.js";
+import { deleteUser } from "../controllers/blue-jobgiver.controller.js";
 
 const router = express.Router();
 
-//router.get("/register",)
-//router.get("/login",)
+router.delete("/delete/:id",deleteUser)
 
 export default router;

@@ -1,5 +1,6 @@
 import BlueJobGiver from "../models/blue-jobgiver.model.js";
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 
 export const signup = async (req,res)=>
 {
@@ -36,9 +37,19 @@ export const login = async (req,res)=>
         if(!isCorrect)
         {return res.status(400).send("Wrong password or email!")};
 
+        //web token
+        const token = jwt.sign(
+        {
+            id:blueJobGiver._id,
+        }, process.env.JWT_KEY)
+
         //3.Exclude the password from the response
         const {password, ...info} = blueJobGiver._doc;
-        res.status(200).send(info)
+        res.cookie("accessToken", token ,
+            {
+                httpOnly:true,
+            }
+        ).status(200).send(info)
     }
     catch(err)
     {

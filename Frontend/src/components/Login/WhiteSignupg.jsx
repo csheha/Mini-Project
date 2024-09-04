@@ -82,6 +82,17 @@ function WhiteSignupg() {
               />
             </div>
             <div className="mb-4">
+              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="passwordBlue">
+                Password
+              </label>
+              <input
+                type="password"
+                id="passwordBlue"
+                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+                placeholder="Enter your password"
+              />
+            </div>
+            <div className="mb-4">
               <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="address">
                 Address
               </label>
